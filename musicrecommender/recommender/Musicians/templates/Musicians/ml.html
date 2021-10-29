@@ -1,0 +1,42 @@
+{% include "Musicians/base.html" %}
+{% block content %}
+{% load static %}
+<div class="login">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                    <form action="{% url 'ml' %}" method="POST">
+                        {% csrf_token %}
+
+                        {% if error%}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                        {% endif %}
+
+                        <div class="register-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Listened</label>
+                                    <input class="form-control" type="text" name="listened" placeholder="No of times listened:">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Genre :</label><br>
+                                    <input type="radio" id="Classics" name="genre" value="Classics">
+                                      <label for="Classics">Classics</label>
+                                      <input type="radio" id="Devotional" name="genre" value="Devotional">
+                                      <label for="Devotional">Devotional</label>
+                                      <input type="radio" id="Comedy" name="genre" value="comedy">
+                                      <label for="Comedy">Comedy</label>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                        </div>
+
+{% endblock %}
